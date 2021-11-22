@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des acteurs{% endblock %}
+
+{% block body %}
+
+{% for a in actors  %}
+<div><img src="{{asset('images/' ~ a.image ) }}" ></div>
+    <div>{{ a.nom }}{{ a.image }}</div>
+{% endfor %}
+
+{% endblock %}
