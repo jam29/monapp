@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Repository\ActorRepository;
+use App\Entity\Actor;
 
 class ActorController extends AbstractController
 {
@@ -25,10 +26,11 @@ class ActorController extends AbstractController
      /**
      * @Route("/afficheactor/{id}", name="afficheactor")
      */
-    public function afficherUnActeur(ActorRepository $ar,$id): Response
+   // public function afficherUnActeur(ActorRepository $ar,$id): Response
+   public function afficherUnActeur(Actor $actor): Response
     {
-        // 
-        $actor = $ar->find($id); 
+        
+      //  $actor = $ar->find($id); 
         return $this->render('actor/afficherUn.html.twig',["actor"=>$actor]);
     }
 
