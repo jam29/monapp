@@ -20,4 +20,23 @@ class ActorController extends AbstractController
             'actors' => $actors
         ]);
     }
+
+
+     /**
+     * @Route("/afficheactor/{id}", name="afficheactor")
+     */
+    public function afficherUnActeur(ActorRepository $ar,$id): Response
+    {
+        // 
+        $actor = $ar->find($id); 
+        return $this->render('actor/afficherUn.html.twig',["actor"=>$actor]);
+    }
+
+
+
+
+
+
+
+
 }

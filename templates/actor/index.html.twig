@@ -7,7 +7,7 @@
 {% for a in actors  %}
 <tr>
 <td><img src="{{asset('images/' ~ a.image ) }}" ></td>
-<td>{{ a.nom }}</td>
+<td><a href="{{ path('afficheactor', {'id': a.id })  }}">{{ a.nom }}</a></td>
 <td>{{ a.prenom }}</td>
 </tr>
 {% endfor %}
