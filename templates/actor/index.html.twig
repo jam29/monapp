@@ -3,10 +3,13 @@
 {% block title %}Liste des acteurs{% endblock %}
 
 {% block body %}
-
+<table>
 {% for a in actors  %}
-<div><img src="{{asset('images/' ~ a.image ) }}" ></div>
-    <div>{{ a.nom }}{{ a.image }}</div>
+<tr>
+<td><img src="{{asset('images/' ~ a.image ) }}" ></td>
+<td>{{ a.nom }}</td>
+<td>{{ a.prenom }}</td>
+</tr>
 {% endfor %}
-
+<table>
 {% endblock %}
