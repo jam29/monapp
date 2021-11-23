@@ -16,6 +16,13 @@
     
     </td>
 <td>{{ a.prenom }}</td>
+<td>
+<a href="{{ 
+        path('modifactor', {'id': a.id } )
+    }}">
+    modif
+    </a>
+</td>
 </tr>
 {% endfor %}
 <table>
