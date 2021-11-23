@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +20,6 @@ class ActorController extends AbstractController
             'actors' => $actors
         ]);
     }
-
 
      /**
      * @Route("/afficheactor/{id}", name="afficheactor")
