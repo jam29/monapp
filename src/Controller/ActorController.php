@@ -49,9 +49,9 @@ class ActorController extends AbstractController
         $form = $this->createForm(ActorType::class,$actor);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted() ) {
+        if ($form->isSubmitted() && $form->isValid() ) {
             $em->persist($actor) ;
-            $em->flush(); 
+            $em->flush();
             return $this->redirectToRoute('actor') ;
         }
        

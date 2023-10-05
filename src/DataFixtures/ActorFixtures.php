@@ -27,6 +27,17 @@ class ActorFixtures extends Fixture
         $a3 = new Actor();
         $a3->setNom("pierre")->setPrenom('kiroule')->setImage('pierre.jpg');
         $manager->persist($a3);
+
+        $movie = new Movie();
+        $movie->setTitre("tttt")
+                ->setDescription("ddd")
+                ->setAffiche("afff")
+                ->addActeur($a1)
+                ->addActeur($a2);
+
+        $manager->persist($movie);
+
+        
         
         $manager->flush();
     }

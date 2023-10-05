@@ -7,8 +7,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Valid ;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+use DateTime;
+
 /**
  * @ORM\Entity(repositoryClass=ActorRepository::class)
+ * @Vich\Uploadable
  */
 class Actor
 {
@@ -21,6 +29,7 @@ class Actor
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Valid\Length(min=3,max=15,minMessage="il faut 3 caracteres",maxMessage="trop de caracteres")
      */
     private $nom;
 
@@ -34,15 +43,39 @@ class Actor
      */
     private $image;
 
+    // /**
+    //  * @Vich\UploadableField(mapping="actor_image", fileNameProperty="image")
+    //  * @var File
+    //  */
+    // private $imageFile;
+
     /**
      * @ORM\ManyToMany(targetEntity=Movie::class, mappedBy="acteurs")
      */
     private $movies;
 
+    // /**
+    //  * @ORM\Column(type="datetime")
+    //  */
+    // private $update_at;
+
     public function __construct()
     {
         $this->movies = new ArrayCollection();
     }
+
+    // public function setImageFile(?File $imageFile = null): self
+    // {    
+    //     $this->update_at = new DateTime('now');
+    //     $this->imageFile = $imageFile;
+
+	//     return $this; 
+    // }
+
+    // public function getImageFile(): ?File
+    // {
+    //     return $this->imageFile;
+    // }
 
     public function getId(): ?int
     {
@@ -78,7 +111,7 @@ class Actor
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -111,4 +144,16 @@ class Actor
 
         return $this;
     }
+
+    // public function getUpdateAt(): ?\DateTimeImmutable
+    // {
+    //     return $this->update_at;
+    // }
+
+    // public function setUpdateAt(\DateTimeImmutable $update_at): self
+    // {
+    //     $this->update_at = $update_at;
+
+    //     return $this;
+    // }
 }
